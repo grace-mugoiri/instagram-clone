@@ -5,8 +5,12 @@ class PostsController < ApplicationController
 		redirect_to root_path
 	end
 
+	def show
+		@posts = current_user.posts.order(created_at: :desc)
+	end
+
 	private
-	
+
 	def post_params
 		params.require(:post).permit(:descrption, :image, :user_id)
 	end
