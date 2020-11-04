@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@posts = current_user.posts.order(created_at: :desc)
+		@post = Post.find(params[:id])
+		# @posts = current_user.posts.order(created_at: :desc)
 	end
 
 	private
