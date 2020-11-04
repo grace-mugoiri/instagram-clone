@@ -7,7 +7,14 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
-		# @posts = current_user.posts.order(created_at: :desc)
+		@posts = current_user.posts.order(created_at: :desc)
+	end
+
+	def destroy
+		@post = current_user.posts.find(params[:id])
+		@post.destroy
+
+		redirect_to user_path(current_user)
 	end
 
 	private
